@@ -44,8 +44,13 @@ Commands:
 │   ├── splice
 │   ├── tee
 │   └── write
+├── math
+│   ├── ceil
+│   └── floor
 ├── mem
 │   ├── brk
+│   ├── calloc
+│   ├── free
 │   ├── malloc
 │   ├── mlock
 │   ├── mmap
@@ -53,7 +58,8 @@ Commands:
 │   ├── mremap
 │   ├── msync
 │   ├── munlock
-│   └── munmap
+│   ├── munmap
+│   └── realloc
 ├── net
 │   ├── accept
 │   ├── bind
@@ -80,6 +86,7 @@ Commands:
 │   ├── memchr
 │   ├── memcmp
 │   ├── memcpy
+│   ├── memset
 │   ├── strcat
 │   ├── strchr
 │   ├── strcmp
@@ -116,8 +123,65 @@ Commands:
 └── util
     ├── atoi
     ├── atol
+    ├── ctype
+    ├── itoa
     ├── strtol
     ├── strtoull
     ├── tolower
     └── toupper
 ```
+
+### Next in Line
+
+System Calls
+
+- Credentials
+  - [ ] `setreuid`, `setregid`
+  - [ ] `setresuid`, `setresgid`, `getresuid`, `getresgid`
+- Thread (`thread/`)
+  - [ ] `execve`
+  - [ ] `clone`
+  - [ ] `gettid`, `tgkill`
+- File system (`fs/`)
+  - [ ] `getdents`, `getdents64` (`readdir`)
+  - [ ] `chown`, `chmod`, `utimensat`, `faccessat`
+- IO (`io/`)
+  - [ ] `poll`, `select`, `epoll_create1`, `epoll_ctl`, `epoll_wait`
+  - [ ] `readv`, `writev`
+- IPC
+  - [ ] `pipe`, `pipe2`, `shmget`, `shmctl`
+  - [ ] `msgsnd`, `msgrcv`, `semget`, `semop`
+
+Wrappers
+
+- POSIX Functions
+  - [ ] `system`, `popen`, `realpath`, `getenv`
+- Errors
+  - [ ] `errno`, `perror`
+- Math
+  - [x] `floor`, `ceil`
+  - [ ] `pow`, `sqrt`, `log`
+  - [ ] `abs`
+- Stdio
+  - [ ] `printf`, `sprintf`, `vsprintf`, `fprintf`
+  - [ ] `fopen`, `fclose`, `fseek`
+  - [ ] `scanf`, `sscanf`, `fscanf`
+  - [ ] `getline`
+- String
+  - [ ] `strtok`, `strtok_r`
+- Boolean
+  - `true/false`, `bool`
+
+Specialty (Custom) Functions
+
+- Macros
+  - [ ] `SIZE`, `MAX`, `MIN`
+- String
+  - [ ] `split`, `strip`, `readlines`
+  - [ ] `indexOf`
+  - [ ] `gcd`, `lcm`
+- Array
+  - [ ] `replace`, `rev`
+  - [ ] `intify`, `longify`
+  - [ ] `sprint`, `dprint`, `lprint`
+  - [ ] `qsort`

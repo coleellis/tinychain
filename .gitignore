@@ -8,3 +8,6 @@ install/
 
 # Output files
 bin/
+
+# Configuration files
+.vscode/

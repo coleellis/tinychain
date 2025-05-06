@@ -12,8 +12,10 @@ find_package(Tinychain 1.0.0 REQUIRED CONFIG)
 add_executable(main main.c)
 
 # Get tinylib and proper runtime
-target_link_libraries(main PRIVATE Tinychain::tinylib Tinychain::tinycrt_x86_64)
+# target_link_libraries(main PRIVATE Tinychain::tinylib Tinychain::tinycrt_x86_64)
 # target_link_libraries(main PRIVATE Tinychain::tinylib Tinychain::tinycrt_i386)
+# target_link_libraries(main PRIVATE Tinychain::tinylib Tinychain::tinycrt_arm)
+target_link_libraries(main PRIVATE Tinychain::tinylib Tinychain::tinycrt_aarch64)
 
 # Minification
 # target_compile_options(main PRIVATE -g)

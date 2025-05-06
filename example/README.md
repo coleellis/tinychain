@@ -34,3 +34,26 @@ The example binary is my exact solution for the 2023 Day 3 Advent of Code challe
 3. Change using `printf` to `itoa` and `puts`.
 
 This change took under 5 minutes and worked first time :)
+
+Final File Sizes:
+
+```text
+./bin
+├── aarch64
+│   └── [4.3K]  main
+├── arm
+│   └── [3.8K]  main
+├── i386
+│   └── [4.7K]  main
+└── x86_64
+    └── [4.1K]  main
+```
+
+Compilation Architecture Confirmation:
+
+```text
+./bin/aarch64/main: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), statically linked, stripped
+./bin/arm/main:     ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, stripped
+./bin/i386/main:    ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, stripped
+./bin/x86_64/main:  ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, stripped
+```

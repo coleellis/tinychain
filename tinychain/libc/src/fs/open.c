@@ -4,6 +4,10 @@
 
 int open(const char *pathname, int flags, unsigned int mode)
 {
-    long ret = syscall3(SYS_open, (long)pathname, (long)flags, (long)mode);
-    return (int)ret;
+#if defined(__aarch64__)
+    // SYS_openat
+    return -1; // FIXME: error for now
+#else
+    return syscall3(SYS_open, (long)pathname, flags, mode);
+#endif
 }

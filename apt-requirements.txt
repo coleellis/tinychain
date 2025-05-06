@@ -1,0 +1,5 @@
+gcc-aarch64-linux-gnu
+gcc-arm-linux-gnueabi
+make
+cmake
+nasm
