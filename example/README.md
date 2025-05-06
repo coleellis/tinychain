@@ -40,13 +40,13 @@ Final File Sizes:
 ```text
 ./bin
 ├── aarch64
-│   └── [4.3K]  main
+│   └── [2.9K]  main
 ├── arm
-│   └── [3.8K]  main
+│   └── [2.9K]  main
 ├── i386
-│   └── [4.7K]  main
+│   └── [2.8K]  main
 └── x86_64
-    └── [4.1K]  main
+    └── [2.8K]  main
 ```
 
 Compilation Architecture Confirmation:
