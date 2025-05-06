@@ -1,0 +1,10 @@
+# Build files
+build/
+install/
+
+# Cache files
+.cache/
+.cmake/
+
+# Output files
+bin/
