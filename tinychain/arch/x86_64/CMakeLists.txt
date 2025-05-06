@@ -1,5 +1,5 @@
 # Add the runtime
-add_library(tinycrt_x86_64 OBJECT crt0.s syscall.c)
+add_library(tinycrt_x86_64 OBJECT crt0.s)
 
 target_include_directories(tinycrt_x86_64 PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>

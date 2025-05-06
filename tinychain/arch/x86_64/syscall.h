@@ -1,7 +1,8 @@
 #ifndef ARCH_X86_64_SYSCALL_H
 #define ARCH_X86_64_SYSCALL_H
 
-// Syscall numbers
+/* Syscall numbers */
+
 #define SYS_read           0
 #define SYS_write          1
 #define SYS_open           2
@@ -135,13 +136,77 @@
 #define SYS_vmsplice       278
 #define SYS_dup3           292
 
-// Syscall functions
-long syscall0(long n);
-long syscall1(long n, long arg1);
-long syscall2(long n, long arg1, long arg2);
-long syscall3(long n, long arg1, long arg2, long arg3);
-long syscall4(long n, long arg1, long arg2, long arg3, long arg4);
-long syscall5(long n, long arg1, long arg2, long arg3, long arg4, long arg5);
-long syscall6(long n, long arg1, long arg2, long arg3, long arg4, long arg5, long arg6);
+/* Syscall functions */
+
+static inline long syscall0(long n)
+{
+    long ret;
+    __asm__ volatile("syscall" : "=a"(ret) : "a"(n) : "memory", "cc");
+    return ret;
+}
+
+static inline long syscall1(long n, long arg1)
+{
+    long ret;
+    __asm__ volatile("syscall" : "=a"(ret) : "a"(n), "D"(arg1) : "memory", "cc");
+    return ret;
+}
+
+static inline long syscall2(long n, long arg1, long arg2)
+{
+    long ret;
+    __asm__ volatile("syscall" : "=a"(ret) : "a"(n), "D"(arg1), "S"(arg2) : "memory", "cc");
+    return ret;
+}
+
+static inline long syscall3(long n, long arg1, long arg2, long arg3)
+{
+    long ret;
+    __asm__ volatile("syscall"
+        : "=a"(ret)
+        : "a"(n), "D"(arg1), "S"(arg2), "d"(arg3)
+        : "memory", "cc");
+    return ret;
+}
+
+static inline long syscall4(long n, long arg1, long arg2, long arg3, long arg4)
+{
+    register long r10 __asm__("r10") = arg4;
+
+    long ret;
+    __asm__ volatile("syscall"
+        : "=a"(ret)
+        : "a"(n), "D"(arg1), "S"(arg2), "d"(arg3), "r"(r10)
+        : "rcx", "r11", "memory", "cc");
+    return ret;
+}
+
+static inline long syscall5(long n, long arg1, long arg2, long arg3, long arg4, long arg5)
+{
+    register long r10 __asm__("r10") = arg4;
+    register long r8 __asm__("r8")   = arg5;
+
+    long ret;
+    __asm__ volatile("syscall"
+        : "=a"(ret)
+        : "a"(n), "D"(arg1), "S"(arg2), "d"(arg3), "r"(r10), "r"(r8)
+        : "rcx", "r11", "memory", "cc");
+    return ret;
+}
+
+static inline long syscall6(
+    long n, long arg1, long arg2, long arg3, long arg4, long arg5, long arg6)
+{
+    register long r10 __asm__("r10") = arg4;
+    register long r8 __asm__("r8")   = arg5;
+    register long r9 __asm__("r9")   = arg6;
+
+    long ret;
+    __asm__ volatile("syscall"
+        : "=a"(ret)
+        : "a"(n), "D"(arg1), "S"(arg2), "d"(arg3), "r"(r10), "r"(r8), "r"(r9)
+        : "rcx", "r11", "memory", "cc");
+    return ret;
+}
 
 #endif // ARCH_X86_64_SYSCALL_H
