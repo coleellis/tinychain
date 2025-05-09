@@ -61,6 +61,16 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} \
   -Wl,--build-id=none \
 ")
 
+# Set the toolchain
+set(CMAKE_C_COMPILER "${TRIPLE}-gcc")
+set(CMAKE_CXX_COMPILER "${TRIPLE}-gxx")
+set(CMAKE_ASM_COMPILER "${TRIPLE}-gcc")
+set(CMAKE_LINKER "${TRIPLE}-ld")
+set(CMAKE_RANLIB "${TRIPLE}-ranlib")
+set(CMAKE_OBJCOPY "${TRIPLE}-objcopy")
+set(CMAKE_OBJDUMP "${TRIPLE}-objdump")
+set(CMAKE_STRIP "${TRIPLE}-strip")
+
 # Prevent standard libraries
 set(CMAKE_C_STANDARD_LIBRARIES "")
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
